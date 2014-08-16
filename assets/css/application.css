@@ -22,7 +22,6 @@ body {
 }	
 	
 .menu {
-	//background-color: #0B62DA;
 	float: left;
 	padding: 8px;
 	width: calc(20% - 16px);
@@ -33,15 +32,14 @@ body {
 }
 
 .menu li{
-	border-top: 2px solid white;
+
 }
 
 .menu li:last-child {
-	border-bottom: 2px solid white;
+	
 }
 
 .main-content {
-	//background-color: yellow;
 	float: right;
 	height: 100%;
 	padding: 8px;
@@ -49,10 +47,8 @@ body {
 }
 
 .footer {
-	//background-color: orange;
 	clear:both;
 	text-align: center;
-	//border: 10px ridge red;
 }
 
 .dropdown-list-tab ul li {

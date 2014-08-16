@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Parafia NMP Matki Kościoła i św. Katarzyny Szweckiej</title>
+        <title>Parafia NMP Matki Kościoła i św. Katarzyny Szwedzkiej</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="assets/css/application.css" />
     </head>
@@ -12,7 +12,7 @@
         
         <div class="application-container">
             <div class="title">
-                <h1>Parafia NMP Matki Kościoła i św. Katarzyny Szweckiej</h1>
+                <h1>Parafia NMP Matki Kościoła i św. Katarzyny Szwedzkiej</h1>
             </div>
             <div class="menu">
                 <div class="dropdown-list-tab">

@@ -9,5 +9,5 @@ CREATE Table IF NOT EXISTS parafianie (
 	ksiadz tinyint(1) DEFAULT 0,
 	foreign key(dane_logowania) REFERENCES dane_logowania(id) ON DELETE CASCADE,
 	foreign key(id_zdjecia) REFERENCES zdjecia(id) ON DELETE CASCADE,
-	foreign key(id) REFERENCES czlonkowie(id_parafianina) ON DELETE SET NULL
+	foreign key(id) REFERENCES czlonkowie(id_parafianina)
 ) ENGINE = InnoDB;

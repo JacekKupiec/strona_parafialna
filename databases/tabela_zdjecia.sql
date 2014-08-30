@@ -6,3 +6,5 @@ CREATE Table IF NOT EXISTS zdjecia (
 	id_galerii int,
 	autor Varchar(255)
 ) ENGINE = InnoDB;
+
+CREATE INDEX index_zdjecia_id_galerii ON zdjecia(id_galerii);

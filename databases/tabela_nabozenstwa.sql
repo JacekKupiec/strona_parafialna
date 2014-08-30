@@ -3,5 +3,5 @@ CREATE Table IF NOT EXISTS nabozenstwa (
 	nazwa Varchar(255) NOT NULL,
 	data_poczatek datetime,
 	okres int, /*liczba dni co ile powtarza się nabożeństwo*/
-	data_koniec datetime,
-);
+	data_koniec datetime
+) ENGINE = InnoDB;

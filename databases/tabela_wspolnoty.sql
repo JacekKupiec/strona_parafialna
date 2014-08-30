@@ -6,6 +6,6 @@ CREATE Table IF NOT EXISTS wspolnoty(
 	opis text NOT NULL,
 	email varchar(255),
 	nr_telefonu int(9),
-	foreign key(logo) REFERENCES zdjecia(id),
+	foreign key(logo) REFERENCES zdjecia(id) ON DELETE CASCADE,
 	foreign key(opiekun) REFERENCES parafianie(id)
-);
+) ENGINE = InnoDB;

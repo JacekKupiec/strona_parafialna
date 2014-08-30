@@ -1,0 +1,1 @@
+CREATE Database IF NOT EXISTS parafia DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_polish_ci;

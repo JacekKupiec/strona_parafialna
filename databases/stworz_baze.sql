@@ -5,7 +5,7 @@ source /var/www/databases/tabela_dane_logowania.sql
 source /var/www/databases/tabela_galerie.sql
 source /var/www/databases/tabela_msze.sql
 source /var/www/databases/tabela_nabozenstwa.sql
-source /var/www/databases/tabela_ogloszenia.sql
+source /var/www/databases/tabela_posty.sql
 source /var/www/databases/tabela_zdjecia.sql
 source /var/www/databases/tabela_parafianie.sql
 source /var/www/databases/tabela_wspolnoty.sql

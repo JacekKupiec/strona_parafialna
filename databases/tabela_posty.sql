@@ -10,4 +10,4 @@ jak choćby posty do forum*/
 	tresc text NOT NULL
 ) ENGINE = InnoDB;
 
-CREATE INDEX index_ogloszenia_typ ON ogloszenia(typ);
+CREATE INDEX index_ogloszenia_typ ON posty(typ);

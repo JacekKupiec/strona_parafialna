@@ -4,7 +4,6 @@ CREATE Table IF NOT EXISTS zdjecia (
 	url Varchar(255) NOT NULL,
 	data_wstawienia datetime NOT NULL,
 	id_galerii int,
-	autor Varchar(255)
+	autor Varchar(255),
+	foreign key(id_galerii) REFERENCES galerie(id) ON DELETE CASCADE
 ) ENGINE = InnoDB;
-
-CREATE INDEX index_zdjecia_id_galerii ON zdjecia(id_galerii);

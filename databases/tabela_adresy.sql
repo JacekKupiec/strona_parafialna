@@ -7,4 +7,4 @@ CREATE Table IF NOT EXISTS adresy (
 	klatka varchar(10),
 	nr_mieszkania int NOT NULL,
 	kod_pocztowy varchar(10) NOT NULL
-)ENGINE = InnoDB;
+) ENGINE = InnoDB;

@@ -1,2 +1,9 @@
-.project  
-.settings/
+.project/  
+*.settings/
+*.sql~
+*.css~
+*.html~
+*.js~
+*.php~
+*.gitignore~
+

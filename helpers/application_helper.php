@@ -1,29 +1,32 @@
-<?php function menu() {
-	echo <<< END
+<?php 
+function menu(){
+	echo <<<END
 	<div class="dropdown-list-tab">
-		<a>Parafia</a>
+		<a href="index.php">Parafia</a>
 		<ul>
-         <li><a>Historia</a></li>
-         <li>Kontakt</li>
+         <li><a href="historia.php">Historia</a></li>
+         <li><a href="kontakt.php">Kontakt</a></li>
          <li>
-             <a>Duszpasterze</a>
+             <a href="ksieza.php">Duszpasterze</a>
              <ul>
-                 <li>Tadeusz Balicki</li>
-                 <li>Piotr Przyborek</li>
+             		<!-- Księża też z bazy -->
+                 <li><a href>Tadeusz Balicki</a></li>
+                 <li><a href>Piotr Przyborek</a></li>
              </ul>
          </li>
          <li>
-             <a>Ogłoszenia parafialne</a>
+             <a href="ogloszenia.php">Ogłoszenia parafialne</a>
              <ul>
-                 <li>Ogłoszenia bierzące</li>
-                 <li>Archiwum</li>
+                 <li><a href="ogloszenia.php?q=current">Ogłoszenia bierzące</a></li>
+                 <li><a href="ogloszenia.php?q=archiwum">Archiwum</a></li>
              </ul>
          </li>
      	</ul>
 	 </div>
     <div class="dropdown-list-tab">
-        <a>Grupy duszpasterskie</a>
+        <a href="grupy_duszpasterskie.php">Grupy duszpasterskie</a>
         <ul>
+        		<!-- Wspólnoty z bazy danych -->
             <li><a>Rada parafialna</a></li>
             <li><a>Ucho Igielne</a></li>
             <li><a>Służba liturgiczna</a></li>
@@ -32,12 +35,13 @@
         </ul> 
     </div>
     <div class="dropdown-list-tab">
-        <a>Galeria zdjęć</a>
+        <a href="galeria.php">Galeria zdjęć</a>
         <ul>
+        		<!-- Tutaj powinny byc wylistowane galeria z bazy danych -->
             <li>Szczyrk 2014</li>
             <li> Pożegnanie księdza proboszcza</li>
         </ul>
     </div>
-	END
+END;
 }
 ?>

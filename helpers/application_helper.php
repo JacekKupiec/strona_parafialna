@@ -1,5 +1,5 @@
 <?php 
-function menu(){
+function menu() {
 	echo <<<END
 	<div class="dropdown-list-tab">
 		<a href="index.php">Parafia</a>
@@ -43,5 +43,13 @@ function menu(){
         </ul>
     </div>
 END;
+}
+
+function banner($banner) {
+	echo "<img src=\"$banner\" alt=\"banner\" />";
+}
+
+function title($title) {
+	echo "<h1>$title</h1>";
 }
 ?>

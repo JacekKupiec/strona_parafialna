@@ -9,18 +9,16 @@
         <link rel="stylesheet" type="text/css" href="assets/css/application.css" />
     </head>
     <body>
-        <div class="banner">
-            <img src="assets/images/application/Baner przeskalowany.jpg" alt="banner" />  
-        </div>
+			<div class='banner'>
+				<?php banner("assets/images/application/Baner przeskalowany.jpg") ?>
+			</div>
         
         <div class="application-container">
-            <div class="title">
-                <h1>Parafia NMP Matki Kościoła i św. Katarzyny Szwedzkiej</h1>
+        		<div class="title">
+            	<?php title("Parafia NMP Matki Kościoła i św. Katarzyny Szwedzkiej"); ?>
             </div>
             <div class="menu">
-                <?php menu();
-               	 echo "Dwa"
-                ?>
+                <?php menu();?>
             </div>
             <div class="main-content">
                 Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce 

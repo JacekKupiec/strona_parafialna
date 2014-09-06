@@ -4,17 +4,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Parafia NMP Matki Kościoła i św. Katarzyny Szwedzkiej</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="assets/css/application.css" />
+        <?php headers(); ?>
     </head>
     <body>
-			<div class='banner'>
-				<?php banner("assets/images/application/Baner przeskalowany.jpg") ?>
-			</div>
+	<div class='banner'>
+		<?php banner("assets/images/application/Baner przeskalowany.jpg") ?>
+	</div>
         
         <div class="application-container">
-        		<div class="title">
+            <div class="title">
             	<?php title("Parafia NMP Matki Kościoła i św. Katarzyny Szwedzkiej"); ?>
             </div>
             <div class="menu">

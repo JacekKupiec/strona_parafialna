@@ -52,4 +52,12 @@ function banner($banner) {
 function title($title) {
 	echo "<h1>$title</h1>";
 }
+
+function headers() {
+	echo <<<END
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>Parafia NMP Matki Kościoła i św. Katarzyny Szwedzkiej</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/application.css" />
+END;
+}
 ?>

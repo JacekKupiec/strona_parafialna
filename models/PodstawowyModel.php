@@ -1,6 +1,6 @@
 <?php
 	class PodstawowyModel {
-		private $db_connect;
+		protected $db_connect;
 		
 		public function __construct($host, $user, $password, $database) {
 			$this->db_connect = mysqli_connect($host, $user, $password, $database);
@@ -10,14 +10,11 @@
 			$this->db_connect->close();
 		}
 		
-		public function insert_into($data) {
-			
+		public function query($qstring) {
+			return $db_connect->querry($qstring);
 		}
 		
-		public function select($data) {
-			
-		}
-		
-		public function 
+		abstract public function truncate();
+		abstract public function insert_into($data);
 	}
 ?>

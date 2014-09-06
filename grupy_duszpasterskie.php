@@ -1,14 +1,14 @@
 <?php
-	require_once 'helpers/application_helper.php'
+	require 'helpers/application_helper.php'
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <?php headers(); ?>
-    </head>
-    <body>
-	<div class='banner'>
-		<?php banner("assets/images/application/Baner przeskalowany.jpg") ?>
+<head>
+	<?php headers(); ?>
+</head>
+<body>
+	<div class="banner">
+		<?php banner("assets/images/application/Baner przeskalowany.jpg"); ?>
 	</div>
 	<div class="application-container">
 		<div class="title">
@@ -36,5 +36,5 @@
 		</div>
 		<div class="footer" >Stopka</div>
 	</div>
-    </body>
+</body>
 </html>

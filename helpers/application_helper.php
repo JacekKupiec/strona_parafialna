@@ -2,26 +2,27 @@
 function menu() {
 	echo <<<END
 	<div class="dropdown-list-tab">
-		<a href="index.php">Parafia</a>
-		<ul>
-         <li><a href="historia.php">Historia</a></li>
-         <li><a href="kontakt.php">Kontakt</a></li>
-         <li>
-             <a href="ksieza.php">Duszpasterze</a>
-             <ul>
-             		<!-- Księża też z bazy -->
-                 <li><a href>Tadeusz Balicki</a></li>
-                 <li><a href>Piotr Przyborek</a></li>
-             </ul>
-         </li>
-         <li>
-             <a href="ogloszenia.php">Ogłoszenia parafialne</a>
-             <ul>
-                 <li><a href="ogloszenia.php?q=current">Ogłoszenia bierzące</a></li>
-                 <li><a href="ogloszenia.php?q=archiwum">Archiwum</a></li>
-             </ul>
-         </li>
-     	</ul>
+		<div class="dropdown-list-tab">
+		<a href="index.php">Strona główna</a>
+		</div>
+		<div class="dropdown-list-tab">
+		<a href="kontakt.php">Kontakt</a>
+		</div>
+		<div class="dropdown-list-tab">
+		<a href="historia.php">Historia</a>
+		</div>
+		<div class="dropdown-list-tab">
+		<a href="ksieza.php">Duszpasterze</a>
+		</div>
+		 <ul>
+			<!-- Księża też z bazy -->
+			 <li><a href>Tadeusz Balicki</a></li>
+			 <li><a href>Piotr Przyborek</a></li>
+		 </ul>
+		 <a href="ogloszenia.php?q=current">Ogłoszenia parafialne</a>
+		 <ul>
+			 <li><a href="ogloszenia.php?q=archiwum">Archiwum</a></li>
+		 </ul>
 	 </div>
     <div class="dropdown-list-tab">
         <a href="grupy_duszpasterskie.php">Grupy duszpasterskie</a>

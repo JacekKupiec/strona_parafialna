@@ -59,6 +59,17 @@ function headers() {
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<title>Parafia NMP Matki Kościoła i św. Katarzyny Szwedzkiej</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/application.css" />
+	<script type="text/javascript" src="assets/javascript/jquery-1.11.1.min.js"></script>
+END;
+}
+
+function form_login($php_script) {
+	echo <<<END
+		<form name="log" class="login" method="post" action="$php_script">
+			<label for="login">Login: <input type="text" placeholder="Tu wpisz swój login" name="login" maxlength="32" required /></label>
+			<label for="password">Hasło: <input type="password" placeholder="Podaj hasło" name="password" maxlength="50" required /></label>
+			<input type="submit" value="Zaloguj" />
+		</form>
 END;
 }
 ?>

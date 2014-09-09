@@ -8,7 +8,7 @@
     </head>
     <body>
 	<div class='banner'>
-		<?php banner("assets/images/application/Baner przeskalowany.jpg") ?>
+		<?php banner("assets/images/Baner przeskalowany.jpg") ?>
 	</div>
 	<div class="application-container">
 		<div class="title">

@@ -1,14 +1,14 @@
 <?php
 /* Na koniec trzeba dorobić użytkowników ,żeby lepiej się zabezpieczyć*/
 	function set_session() {
-		if (!isset($_SESSION['user'])) {
-			$_SESSION['user'] = 'guest';
-			$_SESSION['login'] = false;
+		if (!isset($_SESSION['login'])) {
+			$_SESSION['login'] = logout;
+			$_SESSION['user'] = guest;
 		}
 	}
 	
 	function login() {
-		if ($_SERVER['REQUEST_METHOD'] == "POST" && $_SESSION['user'] == 'guest' && $_GET['login'] == 'yes') 
+		if ($_SERVER['REQUEST_METHOD'] === "POST" && !$_SESSION['login'] && $_GET['login_preceed'] === 'yes' && $_POST['seciurity_login_token'] === $_SESSION['seciurity_login_token']) 
 		{
 			$db = mysqli_connect('localhost', $_SESSION['user'],'123456', 'parafia');
 			
@@ -24,16 +24,13 @@
 						$stmt->bind_result($login, $password, $admin);
 						if ($stmt->fetch() == true) 
 						{
-							if ($admin == 1) 
-							{
-								$_SESSION['user'] = 'admin';
-							}
-							else 
-							{
-								$_SESSION['user'] = 'normal';
-							}
+							if ($admin === 1) 
+								$_SESSION['user'] = admin;
+							else
+								$_SESSION['user'] = normal;
 							
 							$_SESSION['login'] = true;
+							session_regenerate_id(true);
 						}
 					}
 				}
@@ -44,7 +41,7 @@
 	}
 	
 	function registration() {
-		if ($_SERVER['REQUEST_METHOD'] == "POST" && $_SESSION['user'] == 'guest' && $_GET['registration'] == 'yes')
+		if ($_SERVER['REQUEST_METHOD'] == "POST" && ($_SESSION['user'] === guest || $_SESSION['user'] === admin) && $_GET['registration_preceed'] == 'yes' && $_POST['seciurity_registratino_token'] === $_SESSION['seciurity_registration_token'])
 		{
 			$db = mysqli_connect('localhost', $_SESSION['user'], '123456', 'parafia');
 			
@@ -59,7 +56,8 @@
 						$stmt->bind_result($id);
 						if ($stmt->fetch() == null) //znaczy ,że nie odnalezione w bazie danych co znaczy, że mogę zarejestrować użytkownika
 						{
-							
+							$_SESSION['login'] = true;
+							$_SESSION['user'] = 'normal';
 						}
 					}
 				}
@@ -70,6 +68,12 @@
 	}
 	
 	function logout() {
-		
+		if ($_GET('security_logout_token') === $_SESSION['seciurity_logout_token']) 
+		{
+			session_destroy();
+			$_SESSION['user'] = guest;
+			$_SESSION['login'] = logout;
+			session_start(); //Zaczynam śledzenie od początku
+		}
 	}
 ?>

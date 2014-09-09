@@ -3,6 +3,7 @@
 	require 'helpers/session_helper.php';
 	require 'helpers/application_helper.php';
 	
+	session_start();
 	set_session();
 ?>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
 	</head>
 	<body>
 	<div class='banner'>
-		<?php banner("assets/images/application/Baner przeskalowany.jpg") ?>
+		<?php banner("assets/images/God.jpg") ?>
 	</div>
         <div class="application-container">
             <div class="title">

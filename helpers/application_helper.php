@@ -72,4 +72,12 @@ function form_login($php_script) {
 		</form>
 END;
 }
+
+def(guest, 'guest');
+def(normal, 'normal');
+def(admin, 'admin');
+def(login, 'true');
+def(logout, 'false');
+def(root_password, '^JKupiecQ16 R&R');
+def(guest_password, '123456');
 ?>

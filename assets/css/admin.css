@@ -1,0 +1,21 @@
+form {
+	display: inline-block;
+	background-color: gray;
+	padding: 8px;
+	border-radius: 10px;
+	border: 7px outset black;
+}
+
+p.form-container {
+	text-align: center;
+}
+
+form input {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+form fieldset {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}

@@ -1,4 +1,5 @@
 <?php
+	require_once 'lib/constants.php';
 	require_once 'helpers/application_helper.php'
 ?>
 <!DOCTYPE html>

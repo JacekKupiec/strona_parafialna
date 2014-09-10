@@ -49,6 +49,5 @@ body {
 
 form {
 	background-color: gray;
-	display: inline-block;
+	margin: 15px;
 }
-

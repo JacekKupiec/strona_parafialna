@@ -30,8 +30,7 @@
                 </ul>
             </div>
             <div class="main-content">
-                <p class="form-container"><?php form_login(htmlspecialchars($_SERVER['PHP_SELF']), $_SESSION['login']); ?></p>
-                <p class="form-container"><?php form_registration(htmlspecialchars($_SERVER['PHP_SELF']), $_SESSION[secure_registration_token]); ?></p>
+                <?php form_login(htmlspecialchars($_SERVER['PHP_SELF']), $_SESSION[secure_login_token]); form_registration(htmlspecialchars($_SERVER['PHP_SELF']),$_SESSION[secure_registration_token]);?>
             </div>
         </div>
 	</body>

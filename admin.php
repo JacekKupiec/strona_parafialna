@@ -2,6 +2,7 @@
 /*Używam tylko ciastek bo to ważna sprawa ,żeby do panelu nikt mi się nie dostał*/
 	require_once 'helpers/session_helper.php';
 	require_once 'helpers/application_helper.php';
+	require_once 'helpers/form_helper.php';
 	
 	session_start();
 	set_session();

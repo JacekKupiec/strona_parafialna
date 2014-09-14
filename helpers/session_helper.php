@@ -1,4 +1,5 @@
 <?php
+
 require_once 'lib/constants.php';
 require_once 'lib/validation.php';
 
@@ -14,7 +15,10 @@ require_once 'lib/validation.php';
 	}
 	
 	function login() {
-		if ($_SERVER['REQUEST_METHOD'] === "POST" && !$_SESSION['login'] && $_GET['login_preceed'] === 'yes' && $_POST['hidden'] === $_SESSION[secure_login_token]) 
+		if (!is_set($_POST['login_button']))
+			return null;
+		
+		if ($_SERVER['REQUEST_METHOD'] === "POST" && !$_SESSION['login'] && $_POST['login_button'] === 'Zaloguj' && $_POST['hidden'] === $_SESSION[secure_login_token]) 
 		{
 			$db = mysqli_connect('localhost', $_SESSION['user'],'123456', 'parafia');
 			
@@ -38,14 +42,21 @@ require_once 'lib/validation.php';
 			
 			$db->close();
 		}
+		else return false;
 	}
 	
 	function registration() {
-		if ($_SERVER['REQUEST_METHOD'] == "POST" && ($_SESSION['user'] === guest || $_SESSION['user'] === admin) && $_GET['registration_preceed'] == 'yes' && $_POST['hidden'] === $_SESSION[seciurity_registration_token])
+		if (!is_set($_POST['registration_button']))
+			return null;
+		
+		if ($_SERVER['REQUEST_METHOD'] == "POST" && ($_SESSION['user'] === guest || $_SESSION['user'] === admin) 
+		&& $_POST['registration_button'] === 'Zarejestruj' && $_POST['hidden'] === $_SESSION[seciurity_registration_token])
 		{
 			$db = mysqli_connect('localhost', $_SESSION['user'], '123456', 'parafia');
 			$login = $_POST['login'];
 			$email = $_POST['email'];
+			$password = $_POST['password'];
+			$confirmed_password = $_POST['confirmed_password'];
 			$name = $_POST['name'];
 			$surname = $_POST['surname'];
 			$tel_num = $_POST['telephone_number'];
@@ -56,7 +67,7 @@ require_once 'lib/validation.php';
 			$staircase = $_POST['staircase'];
 			$flat_number = $_POST['flat_number'];
 			$post_code = $_POST['post_code'];
-			$password = $_POST['password'];
+			
 			if ($_SESSION['user'] === admin)
 			{
 				if ($_POST[priest] === priest)
@@ -65,26 +76,37 @@ require_once 'lib/validation.php';
 					$admin = $_POST[admin];
 			}
 			
-			validate_registration_form();
-			
-			
-			$stmt = $db->prepare('SELECT id FROM dane_logowania WHERE login = ? AND email = ? LIMIT 1');
-			$stmt->bind_param('ss', $login, $email);
-			$stmt->execute();
-			$stmt->bind_result($id);
-			//znaczy ,że nie odnalezione w bazie danych co znaczy, że mogę zarejestrować użytkownika			
-			if ($stmt->fetch() == null) 
-			{		
-				$_SESSION['login'] = true;
-				$_SESSION['user'] = 'normal';
+			if (validate_registration_form($login, $email, $password, $confirmed_password, $name, $surname, 
+			$tel_num, $country, $city, $street, $house_number, $staircase, $flat_number, $_post_code) === true) {
+				$stmt = $db->prepare('SELECT id FROM dane_logowania WHERE login = ? AND email = ? LIMIT 1');
+				$stmt->bind_param('ss', $login, $email);
+				$stmt->execute();
+				$stmt->bind_result($id);
+				//znaczy ,że nie odnalezione w bazie danych co znaczy, że mogę zarejestrować użytkownika			
+				if ($stmt->fetch() == null) 
+				{
+					$stmt->close();
+					$stmt = $db->
+					$stmt = $db->prepare('INSERT INTO parafianie (imie, nazwisko, dane_logowania, id_adresu, nr_telefonu, 
+					id_zdjecia, admin, ksiadz) VALUES (?,?,?,?,?,?,?,?))');
+					$stmt->bind_params('d',$name, $surname, $id_log, $id_adress, $tel_num, $id_img, $admin, $priest);
+					$stmt->execute();
+					$stmt->close();
+						
+					$_SESSION['login'] = true;
+					$_SESSION['user'] = 'normal';
+				}
+				
+				$db->close();
 			}
-			
-			$db->close();
 		}
+		else return false; 
 	}
 	
 	function logout() {
-		if ($_GET('security_logout_token') === $_SESSION['seciurity_logout_token']) 
+		if (!is_set($_GET[secure_logout_token]))
+			return null;
+		else if ($_GET(secure_logout_token) === $_SESSION[secure_logout_token]) 
 		{
 			session_destroy();
 			//tu usunąć ciastka jak byłyby jakieś potrzebne
@@ -92,5 +114,6 @@ require_once 'lib/validation.php';
 			$_SESSION['user'] = guest;
 			$_SESSION['login'] = logout;
 		}
+		else return array('logout' => logout_error);
 	}
 ?>

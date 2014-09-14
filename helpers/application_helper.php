@@ -67,7 +67,7 @@ END;
 
 function form_login($php_script, $seciurity_login_token) {
 	echo <<<END
-		<form name="log" class="login" method="post" action="$php_script">
+		<form name="log" class="login" method="post" action="$php_script?login_preceed=yes">
 			<label for="login">Login:</label><input type="text" placeholder="Tu wpisz swój login" name="login" maxlength="32" required ><br>
 			<label for="password">Hasło:</label><input type="password" placeholder="Podaj hasło" name="password" maxlength="50" required ><br>
 			<input type="hidden" name="hidden" value="$seciurity_login_token" >
@@ -79,7 +79,7 @@ END;
 //Dorobić ,żeby możliwość zaznaczenia admin wyświetlała się tylko adminowi
 function form_registration($php_script, $seciurity_registration_token) {
 	echo <<<END
-	<form name="reg" class="registration" method="post" action="$php_script" enctype="multipart/form-data" >
+	<form name="reg" class="registration" method="post" action="$php_script?registration_preceed=yes" enctype="multipart/form-data" >
 		<table>
 		<tr><td><label for="name">Imię:</label></td><td><input id="name" name="name" type="text" maxlength="32" required ></td></tr>
 		<tr><td><label for="surname">Nazwisko:</label></td><td><input id="surname" name="surname" type="text" maxlength="50" required ></td></tr>

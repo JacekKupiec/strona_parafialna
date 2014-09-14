@@ -6,4 +6,5 @@
 *.js~
 *.php~
 *.gitignore~
+*#
 

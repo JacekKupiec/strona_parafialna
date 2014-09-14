@@ -1,6 +1,6 @@
 CREATE Table IF NOT EXISTS adresy (
 	id int auto_increment primary key,
-	kraj varchar(5) DEFAULT 'pl',
+	kraj varchar(5) DEFAULT 'Polska',
 	miasto varchar(100) DEFAULT 'Gdańsk',
 	ulica varchar(128) NOT NULL,
 	nr_domu int NOT NULL,

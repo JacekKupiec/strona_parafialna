@@ -1,7 +1,7 @@
 <?php
 /*Używam tylko ciastek bo to ważna sprawa ,żeby do panelu nikt mi się nie dostał*/
-	require 'helpers/session_helper.php';
-	require 'helpers/application_helper.php';
+	require_once 'helpers/session_helper.php';
+	require_once 'helpers/application_helper.php';
 	
 	session_start();
 	set_session();
@@ -30,7 +30,10 @@
                 </ul>
             </div>
             <div class="main-content">
-                <?php form_login(htmlspecialchars($_SERVER['PHP_SELF']), $_SESSION[secure_login_token]); form_registration(htmlspecialchars($_SERVER['PHP_SELF']),$_SESSION[secure_registration_token]);?>
+                <?php 
+                    form_login(htmlspecialchars($_SERVER['PHP_SELF']), $_SESSION[secure_login_token]);
+                    form_registration(htmlspecialchars($_SERVER['PHP_SELF']),$_SESSION[secure_registration_token]);
+                ?>
             </div>
         </div>
 	</body>

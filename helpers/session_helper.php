@@ -2,6 +2,8 @@
 
 require_once 'lib/constants.php';
 require_once 'lib/validation.php';
+require_once 'models/mysql_dealing.php';
+require_once 'models/queries.php';
 
 /* Na koniec trzeba dorobić użytkowników ,żeby lepiej się zabezpieczyć*/
 	function set_session() {
@@ -22,14 +24,9 @@ require_once 'lib/validation.php';
 		{
 			$db = mysqli_connect('localhost', $_SESSION['user'],'123456', 'parafia');
 			
-			$stmt = $db->prepare("SELECT dane_logowania.login, dane_logowania.zaszyfrowane_haslo, parafianie.admin FROM dane_logowania 
-			LEFT JOIN parafianie ON parafianie.dane_logowania = dane_logowania.id WHERE login = ? AND zaszyfrowane_haslo = ?");
+			$stmt = mysql_secure_select($db, fetch_login_data, array("ss", $_POST['login'], sha1($_POST['password'])), array(&$login, &$password, &$admin));
 			
-			$stmt->bind_param("ss", $_POST['login'], sha1($_POST['password']));
-			$stmt->execute();
-			$stmt->bind_result($login, $password, $admin);
-			
-			if ($stmt->fetch() == true) 
+			if ($stmt->fetch() === true) 
 			{
 				if ($admin === 1) 
 					$_SESSION['user'] = admin;
@@ -38,6 +35,7 @@ require_once 'lib/validation.php';
 				
 				$_SESSION['login'] = true;
 				session_regenerate_id(true);
+				$stmt->close();
 			}
 			
 			$db->close();
@@ -78,21 +76,15 @@ require_once 'lib/validation.php';
 			
 			if (validate_registration_form($login, $email, $password, $confirmed_password, $name, $surname, 
 			$tel_num, $country, $city, $street, $house_number, $staircase, $flat_number, $_post_code) === true) {
-				$stmt = $db->prepare('SELECT id FROM dane_logowania WHERE login = ? AND email = ? LIMIT 1');
-				$stmt->bind_param('ss', $login, $email);
-				$stmt->execute();
-				$stmt->bind_result($id);
+				$stmt = $db->prepare();
+				mysql_secure_select($db, check_if_users_exists, array('ss', $login, $email), array(&$id));
 				//znaczy ,że nie odnalezione w bazie danych co znaczy, że mogę zarejestrować użytkownika			
-				if ($stmt->fetch() == null) 
+				if ($stmt->fetch() === null) 
 				{
 					$stmt->close();
-					$stmt = $db->
-					$stmt = $db->prepare('INSERT INTO parafianie (imie, nazwisko, dane_logowania, id_adresu, nr_telefonu, 
-					id_zdjecia, admin, ksiadz) VALUES (?,?,?,?,?,?,?,?))');
-					$stmt->bind_params('d',$name, $surname, $id_log, $id_adress, $tel_num, $id_img, $admin, $priest);
-					$stmt->execute();
-					$stmt->close();
-						
+					mysql_secure_data_manipulation($db, insert_image, $values);
+					mysql_secure_data_manipulation($db, insert_adress, $values);
+					mysql_secure_data_manipulation($db, insert_parishioner, array('ssdddddd',$name, $surname, $id_log, $id_adress, $tel_num, $id_img, $admin, $priest));
 					$_SESSION['login'] = true;
 					$_SESSION['user'] = 'normal';
 				}
